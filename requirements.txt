@@ -1,0 +1,13 @@
+# Core CI/CD dependencies
+flask==2.3.3              # For the web UI
+flask-socketio==5.3.6     # For real-time WebSocket
+pyyaml==6.0.1              # For reading pipeline.yml files
+python-dotenv==1.0.0       # For environment variables
+cookiecutter>=2.0.0        # For project generation with templates
+
+# Dependencies for the pipeline runner
+requests==2.32.2          # For making HTTP requests in tests
+
+# Optional development dependencies
+pytest==7.4.0             # For core testing
+pytest-html==4.1.1        # For HTML reports

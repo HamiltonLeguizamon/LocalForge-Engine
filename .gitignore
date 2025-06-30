@@ -1,0 +1,63 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+localforge_cicd.egg-info/
+*.egg
+
+# Logs
+logs/
+*.log
+ci_cd.log
+ci_cd_cli.log
+ci_cd_ui.log
+
+# Reports and test outputs
+reports/
+test-reports/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.pytest_cache/
+.tox/
+
+# Other project-specific directories
+-p/
+
+# Virtual environments
+.venv/
+virtualenv/
+env/
+venv/
+ENV/
+
+# IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Docker
+.docker/
+*.env
+.env
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Examples
+examples/

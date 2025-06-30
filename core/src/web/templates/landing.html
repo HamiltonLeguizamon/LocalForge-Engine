@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalForge Engine - Local Pipeline Manager</title>
+
+    <!-- localforge -->
+    <link rel="icon" type="image/svg+xml" href="..\static\img\localforge.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="..\static\img\localforge.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="..\static\img\localforge.svg">
+
+    <!-- Bootstrap and Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/landing.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+</head>
+
+<body class="landing-page">
+    <!-- Navigation -->
+    <nav class="landing-nav">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center py-3">
+                <div class="landing-brand">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="32" height="32" class="brand-svg me-2" style="vertical-align: middle;">
+                      <ellipse rx="139.324397" ry="139.324397" transform="translate(150 150)" fill="none" stroke-width="0"/>
+                      <g transform="matrix(.01967 0 0-.01967 24.135698 242.424115)">
+                        <path d="M10346,9385c-140-36-124-22-917-814-805-806-778-774-819-937-33-126-23-245,29-359c35-75,60-104,251-290c130-126,168-158,236-193c121-62,231-86,374-79c127,6,190,22,294,74c89,44,127,74,256,200l106,102l939-940c995-995,979-981,1120-1029c71-25,189-27,264-4c55,16,64,24,192,167c140,158,166,331,72,497-16,28-382,402-981,1002l-956,957l220,223c244,246,279,294,314,433c24,93,25,177,5,264-30,126-61,168-299,407-227,228-266,258-385,302-85,31-229,39-315,17Z" transform="translate(-773.588665 346.077733)" fill="#fff"/>
+                        <rect width="48.829253" height="14.345893" rx="7.17" ry="7.17" transform="matrix(75.278005 0 0 117.404331 4540.575898 5095.002778)" fill="#fff" stroke-width="0"/>
+                        <path d="M3170,5095l-135-135h-1518-1518l48-61c223-285,608-677,868-885c221-176,470-329,657-403c167-66,529-157,798-200c330-54,677-87,1058-101c304-11,429-26,589-71c352-99,574-294,644-567c26-103,26-262-1-368-41-161-160-356-337-550-244-268-705-607-1173-863-104-57-128-76-252-199L2760,555v-277-278h684h684l57,34c183,111,570,192,1080,227c242,16,862,13,1110-6c344-26,600-68,800-132c109-35,238-93,250-113c4-7,237-10,701-10h694v274v274l-93,86c-319,293-692,571-977,726-189,102-290,198-388,365-107,181-189,484-193,702-1,95,34,210,117,383c214,446,585,774,1050,929c271,91,420,109,954,121c391,9,554,17,765,41c327,36,583,108,661,186l34,34v279v280l28,6c82,18,105,27,144,57c24,18,54,53,68,77c23,42,25,55,25,180c0,155-8,176-78,207-40,17-181,18-3837,21l-3795,2-135-135Z" transform="translate(433.221175 0)" fill="#fff"/>
+                      </g>
+                      <g transform="matrix(.119846 0 0 0.119846 120.637792 96.278346)">
+                        <polygon points="95.583,258.914 203.967,306.033 203.967,275.528 128.362,245.546 203.967,216.641 203.967,185.911 95.583,232.82" fill="#222"/>
+                        <polygon points="213.986,326.744 236.312,326.744 275.894,163.256 253.135,163.256" fill="#222"/>
+                        <polygon points="285.928,216.431 361.638,245.86 285.928,275.633 285.928,306.153 394.416,258.914 394.416,233.03 285.928,186.12" fill="#222"/>
+                      </g>
+                    </svg>
+                    <span>LocalForge Engine</span>
+                </div>
+                <div class="landing-actions">
+                    <a href="/pipelines" class="btn btn-outline-light btn-sm me-2">
+                        <i class="fas fa-play me-1"></i>Pipelines
+                    </a>
+                    <a href="/projects" class="btn btn-light btn-sm">
+                        <i class="fas fa-folder-plus me-1"></i>Projects
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="row min-vh-100 align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <i class="fas fa-terminal me-2"></i>
+                            Development Tool
+                        </div>
+                        <h1 class="hero-title">
+                            <span class="text-accent">LocalForge Engine</span><br>
+                            for developers
+                        </h1>
+                        <p class="hero-description">
+                            Local web interface to manage continuous integration pipelines,
+                            generate projects with templates and monitor builds in real time.
+                        </p>
+                        <div class="hero-features">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-play-circle"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <strong>Run Pipelines</strong>
+                                    <span>YAML-based local CI/CD workflows</span>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <strong>Real-Time Logs</strong>
+                                    <span>Step-by-step execution monitoring</span>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-folder-open"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <strong>Project Scaffolding</strong>
+                                    <span>Templates for Flask, Django, Node.js</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-cta">
+                            <a href="/pipelines" class="btn btn-primary btn-lg me-3">
+                                <i class="fas fa-play me-2"></i>
+                                Run Pipelines
+                            </a>
+                            <a href="/projects" class="btn btn-outline-primary btn-lg">
+                                <i class="fas fa-folder-plus me-2"></i>
+                                Generate Project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-visual">
+                        <div class="visual-container">
+                            <!-- Simple Dashboard Preview -->
+                            <div class="dashboard-preview">
+                                <div class="preview-header">
+                                    <div class="preview-dots">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                    <span class="preview-title">Pipeline Status</span>
+                                </div>
+                                <div class="preview-content">
+                                    <div class="preview-pipeline">
+                                        <div class="pipeline-step completed">
+                                            <div class="step-indicator"></div>
+                                            <span>Build</span>
+                                        </div>
+                                        <div class="pipeline-step active">
+                                            <div class="step-indicator"></div>
+                                            <span>Test</span>
+                                        </div>
+                                        <div class="pipeline-step">
+                                            <div class="step-indicator"></div>
+                                            <span>Deploy</span>
+                                        </div>
+                                    </div>
+                                    <div class="preview-stats">
+                                        <div class="stat-item">
+                                            <span class="stat-value">24</span>
+                                            <span class="stat-label">Pipelines</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-value">98%</span>
+                                            <span class="stat-label">Success</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tech Stack Icons -->
+                            <div class="tech-stack">
+                                <div class="tech-icon">
+                                    <i class="fab fa-python"></i>
+                                </div>
+                                <div class="tech-icon">
+                                    <i class="fab fa-docker"></i>
+                                </div>
+                                <div class="tech-icon">
+                                    <i class="fab fa-git-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <h2 class="section-title">Features</h2>
+                    <p class="section-subtitle">Everything you need to manage your local development</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-card-icon">
+                            <i class="fas fa-file-code"></i>
+                        </div>
+                        <h4>YAML Pipelines</h4>
+                        <p>Define your CI/CD workflows using simple YAML files. Support for multiple steps, testing,
+                            building, and deployment.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-card-icon">
+                            <i class="fas fa-terminal"></i>
+                        </div>
+                        <h4>Local Web Interface</h4>
+                        <p>Run from your browser. No external services or complex configuration required. Just Python
+                            and your code.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-card-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <h4>Project Templates</h4>
+                        <p>Generate base projects with complete structure, dependencies, and preconfigured pipeline for
+                            Flask, Django, and Node.js.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-card-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h4>Logs & Reports</h4>
+                        <p>Visualize execution in real time with detailed logs and reports of each pipeline step.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-card-icon">
+                            <i class="fas fa-docker"></i>
+                        </div>
+                        <h4>Docker Support</h4>
+                        <p>Generated projects include Dockerfile and docker-compose for containerized development and
+                            testing.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-card-icon">
+                            <i class="fas fa-git-alt"></i>
+                        </div>
+                        <h4>Git Ready</h4>
+                        <p>Folder and file structure prepared for version control from the first commit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Start Section -->
+    <section class="quickstart-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-title">Quick Start</h2>
+                    <p class="section-subtitle mb-4">Get started in under 2 minutes</p>
+
+                    <div class="quickstart-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h5>Clone the repository</h5>
+                                <div class="code-block">
+                                    <code>git clone https://github.com/HamiltonLeguizamon/LocalForge-Engine && cd LocalForge-Engine</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h5>Install dependencies</h5>
+                                <div class="code-block">
+                                    <code>pip install -r requirements.txt</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h5>Run the interface</h5>
+                                <div class="code-block">
+                                    <code>python run_ui.py</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <a href="/pipelines" class="btn btn-primary btn-lg">
+                            <i class="fas fa-arrow-right me-2"></i>
+                            Get Started Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="cta-title">Ready to optimize your development?</h2>
+                    <p class="cta-description">
+                        Open source tool for developers looking to automate
+                        their CI/CD workflows without external dependencies.
+                    </p>
+                    <div class="cta-actions">
+                        <a href="/pipelines" class="btn btn-primary btn-lg me-3">
+                            <i class="fas fa-play me-2"></i>
+                            View Pipelines
+                        </a>
+                        <a href="/projects" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-folder-plus me-2"></i>
+                            Generate Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- Footer -->
+    <footer class="landing-footer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="footer-brand">
+                        <i class="fas fa-code-branch me-2"></i>
+                        <span>LocalForge Engine</span>
+                    </div>
+                    <p class="footer-description">
+                        Local tool for developers. Open source and self-contained.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="footer-info">
+                        <small>Version 1.0</small><br>
+                        <small class="text-muted">Developed for local development workflows</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

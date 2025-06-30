@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pipeline Runner - LocalForge Engine</title>
+
+  <!-- localforge -->
+  <link rel="icon" type="image/svg+xml" href="..\static\img\localforge.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="..\static\img\localforge.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="..\static\img\localforge.svg">
+
+  <!-- Bootstrap and Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/pipelines.css') }}">
+</head>
+
+<body class="pipelines-page">
+  <!-- Modern Navigation -->
+  <nav class="landing-nav">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center py-3">
+        <div class="landing-brand">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="32" height="32" class="brand-svg me-2" style="vertical-align: middle;">
+            <ellipse rx="139.324397" ry="139.324397" transform="translate(150 150)" fill="none" stroke-width="0"/>
+            <g transform="matrix(.01967 0 0-.01967 24.135698 242.424115)">
+              <path d="M10346,9385c-140-36-124-22-917-814-805-806-778-774-819-937-33-126-23-245,29-359c35-75,60-104,251-290c130-126,168-158,236-193c121-62,231-86,374-79c127,6,190,22,294,74c89,44,127,74,256,200l106,102l939-940c995-995,979-981,1120-1029c71-25,189-27,264-4c55,16,64,24,192,167c140,158,166,331,72,497-16,28-382,402-981,1002l-956,957l220,223c244,246,279,294,314,433c24,93,25,177,5,264-30,126-61,168-299,407-227,228-266,258-385,302-85,31-229,39-315,17Z" transform="translate(-773.588665 346.077733)" fill="#fff"/>
+              <rect width="48.829253" height="14.345893" rx="7.17" ry="7.17" transform="matrix(75.278005 0 0 117.404331 4540.575898 5095.002778)" fill="#fff" stroke-width="0"/>
+              <path d="M3170,5095l-135-135h-1518-1518l48-61c223-285,608-677,868-885c221-176,470-329,657-403c167-66,529-157,798-200c330-54,677-87,1058-101c304-11,429-26,589-71c352-99,574-294,644-567c26-103,26-262-1-368-41-161-160-356-337-550-244-268-705-607-1173-863-104-57-128-76-252-199L2760,555v-277-278h684h684l57,34c183,111,570,192,1080,227c242,16,862,13,1110-6c344-26,600-68,800-132c109-35,238-93,250-113c4-7,237-10,701-10h694v274v274l-93,86c-319,293-692,571-977,726-189,102-290,198-388,365-107,181-189,484-193,702-1,95,34,210,117,383c214,446,585,774,1050,929c271,91,420,109,954,121c391,9,554,17,765,41c327,36,583,108,661,186l34,34v279v280l28,6c82,18,105,27,144,57c24,18,54,53,68,77c23,42,25,55,25,180c0,155-8,176-78,207-40,17-181,18-3837,21l-3795,2-135-135Z" transform="translate(433.221175 0)" fill="#fff"/>
+            </g>
+            <g transform="matrix(.119846 0 0 0.119846 120.637792 96.278346)">
+              <polygon points="95.583,258.914 203.967,306.033 203.967,275.528 128.362,245.546 203.967,216.641 203.967,185.911 95.583,232.82" fill="#222"/>
+              <polygon points="213.986,326.744 236.312,326.744 275.894,163.256 253.135,163.256" fill="#222"/>
+              <polygon points="285.928,216.431 361.638,245.86 285.928,275.633 285.928,306.153 394.416,258.914 394.416,233.03 285.928,186.12" fill="#222"/>
+            </g>
+          </svg>
+          <span>LocalForge Engine</span>
+        </div>
+        <div class="landing-actions">
+          <a href="/pipelines" class="btn btn-primary btn-sm me-2">
+            <i class="fas fa-play me-1"></i>Pipelines
+          </a>
+          <a href="/projects" class="btn btn-outline-light btn-sm me-2">
+            <i class="fas fa-folder-plus me-1"></i>Projects
+          </a>
+          <a href="/" class="btn btn-outline-light btn-sm">
+            <i class="fas fa-home me-1"></i>Home
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav> <!-- Hero Section for Pipelines -->
+  <section class="pipelines-hero">
+    <div class="hero-background"></div>
+    <div class="container">
+      <div class="row align-items-center" style="min-height: 35vh">
+        <div class="col-lg-8">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <i class="fas fa-rocket me-2"></i>
+              Pipeline Execution Engine
+            </div>
+            <h1 class="hero-title">
+              <span class="text-accent">Pipeline Executor</span><br />
+              Advanced Local CI/CD
+            </h1>
+            <p class="hero-description">
+              Deploy and monitor your CI/CD pipelines with full control.
+              Real-time execution with detailed logs and advanced metrics.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="stats-mini hero-stats">
+            <div class="stat-item">
+              <div class="stat-value" id="totalRuns">0</div>
+              <div class="stat-label">Total Runs</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value" id="successRate">0%</div>
+              <div class="stat-label">Success Rate</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value" id="avgDuration">0s</div>
+              <div class="stat-label">Average Duration</div>
+            </div>
+            <div class="connection-status connecting" id="connectionStatus">
+              <i class="fas fa-wifi"></i> <span>Connecting...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Section -->
+  <section class="main-content">
+    <div class="container">
+      <!-- Dashboard Principal -->
+      <div class="row mb-4">
+        <!-- Control Panel - Ahora ocupa todo el ancho -->
+        <div class="col-12">
+          <div class="feature-card pipeline-control enhanced">
+            <div class="card-body">              <!-- Main Control Row -->
+              <div class="row g-4 align-items-end">
+                <!-- Project and Environment Selection -->
+                <div class="col-lg-4">
+                  <div class="control-group">
+                    <label for="projectSelector" class="form-label">
+                      <i class="fas fa-folder me-2"></i>Select Project
+                    </label>
+                    <select id="projectSelector" class="form-select modern-select">
+                      <option value="">Choose your project...</option>
+                      {% for project_name, project_data in grouped_pipelines.items() %}
+                      <option value="{{ project_name }}">{{ project_name }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="control-group">
+                    <label for="environmentSelector" class="form-label">
+                      <i class="fas fa-server me-2"></i>Environment & Deployment Type
+                    </label>
+                    <select id="environmentSelector" class="form-select modern-select" disabled>
+                      <option value="">Choose deployment type...</option>
+                    </select>
+                  </div>
+                </div>
+                <!-- Hidden pipeline selector for backward compatibility -->
+                <select id="pipelineSelector" class="form-select modern-select" style="display: none;">
+                  <option value="">Choose your pipeline...</option>
+                  {% for pipeline in pipelines %}
+                  <option value="{{ pipeline.path }}" data-description="{{ pipeline.description }}"
+                    data-directory="{{ pipeline.directory }}" data-steps="{{ pipeline.steps_count }}"
+                    data-environment="{{ pipeline.environment }}" data-project="{{ pipeline.project_name }}">
+                    {{ pipeline.name }}
+                  </option>
+                  {% endfor %}
+                </select>                <div class="col-lg-2">
+                  <div class="control-group">
+                    <button id="startButton" class="btn btn-primary btn-modern btn-lg w-100" disabled> <i
+                        class="fas fa-play me-2"></i>
+                      <span>Execute</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="col-lg-2">
+                  <div class="control-group">
+                    <button id="stopButton" class="btn btn-danger btn-modern btn-lg w-100" style="display: none">
+                      <i class="fas fa-stop me-2"></i>
+                      <span>Stop</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pipeline Info Panel -->
+              <div id="pipelineInfo" class="pipeline-info-panel mt-4" style="display: none">
+                <div class="info-header">
+                  <i class="fas fa-info-circle text-primary me-2"></i>
+                  <span class="info-title">Pipeline Information</span>
+                </div>
+                <div class="info-grid">
+                  <div class="info-card">
+                    <div class="info-icon">
+                      <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="info-content">
+                      <div class="info-label">Description</div>
+                      <div class="info-value" id="pipelineDescription">-</div>
+                    </div>
+                  </div>
+                  <div class="info-card">
+                    <div class="info-icon">
+                      <i class="fas fa-folder-open"></i>
+                    </div>
+                    <div class="info-content">
+                      <div class="info-label">Directory</div>
+                      <div class="info-value" id="pipelineDirectory">-</div>
+                    </div>
+                  </div>
+                  <div class="info-card">
+                    <div class="info-icon">
+                      <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="info-content">
+                      <div class="info-label">Steps</div>
+                      <div class="info-value" id="pipelineSteps">0</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Enhanced Progress Bar -->
+              <div id="progressContainer" class="progress-section mt-4" style="display: none">
+                <div class="progress-header">
+                  <div class="progress-info">
+                    <span id="currentStepText" class="current-step">Starting...</span>
+                    <span id="progressText" class="progress-stats">0%</span>
+                  </div>
+                  <div class="progress-time">
+                    <i class="fas fa-clock me-1"></i>
+                    <span id="progressDuration">00:00</span>
+                  </div>
+                </div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress modern-progress-bar">
+                    <div id="progressFill" class="progress-bar progress-bar-animated" role="progressbar"
+                      aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pipeline Canvas Section -->
+      <div class="row">
+        <div class="col-12">
+          <div class="feature-card pipeline-canvas-panel" style="max-height: 500px; overflow-y: auto;">
+            <div class="feature-card-header">
+              <div class="feature-card-icon gradient-secondary">
+                <i class="fas fa-project-diagram"></i>
+              </div>
+              <div class="header-content">
+                <h5 class="card-title">Execution Flow</h5>
+                <p class="card-subtitle">
+                  Auto-centered visualization of pipeline steps
+                </p>
+              </div>
+            </div>
+            <div class="card-body p-0">
+              <div id="pipelineCanvas" class="pipeline-canvas">
+                <div class="canvas-container">
+                  <svg id="pipelineFlow" class="pipeline-flow-svg">
+                    <!-- SVG content will be generated here -->
+                  </svg>
+                  <div id="nodesContainer" class="nodes-container">
+                    <!-- Pipeline nodes will be generated here -->
+                  </div>
+                </div>
+                <div class="canvas-empty-state" id="canvasEmptyState">
+                  <div class="empty-icon">
+                    <i class="fas fa-project-diagram"></i>
+                  </div>
+                  <h6 class="empty-title">Pipeline Canvas</h6>
+                  <p class="empty-text">
+                    Select and execute a pipeline to see the step sequence
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modern Footer -->
+  <footer class="landing-footer">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <div class="footer-brand">
+            <i class="fas fa-code-branch me-2"></i>
+            <span>LocalForge Engine</span>
+          </div>
+          <p class="footer-description">
+            Local development tool. Pipeline execution made simple.
+          </p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <div class="footer-info">
+            <small>Pipeline Runner</small><br />
+            <small class="text-muted">Execute your CI/CD workflows locally</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Step Detail Modal - Moved outside container for proper positioning -->
+  <div class="modal fade" id="stepDetailModal" tabindex="-1" aria-labelledby="stepDetailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content modern-modal">
+        <div class="modal-header">
+          <div class="modal-icon" id="modalStepIcon">
+            <i class="fas fa-cog"></i>
+          </div>
+          <div class="modal-title-group">
+            <h5 class="modal-title" id="stepDetailModalLabel">
+              Step Details
+            </h5>
+            <p class="modal-subtitle" id="stepDetailSubtitle"></p>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="step-detail-content">
+            <div class="detail-section">
+              <h6 class="detail-title">
+                <i class="fas fa-info-circle me-2"></i>Step Status
+              </h6>
+              <div class="detail-value" id="stepDetailStatus">-</div>
+            </div>
+
+            <div class="detail-section">
+              <h6 class="detail-title">
+                <i class="fas fa-clock me-2"></i>Timing Information
+              </h6>
+              <div class="time-grid">
+                <div class="time-item">
+                  <span class="time-label">Start:</span>
+                  <span class="time-value" id="stepStartTime">-</span>
+                </div>
+                <div class="time-item">
+                  <span class="time-label">Duration:</span>
+                  <span class="time-value" id="stepDuration">-</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="detail-section">
+              <h6 class="detail-title">
+                <i class="fas fa-terminal me-2"></i>Execution Log
+              </h6>
+              <div class="step-log-container">
+                <pre id="stepLogContent" class="step-log-content">
+No logs available</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script>
+  
+  <!-- Pipeline Data -->
+  <script>
+    window.pipelineData = {
+      grouped: {{ grouped_pipelines | tojson }},
+      flat: {{ pipelines | tojson }}
+    };
+  </script>
+  
+  <script src="{{ url_for('static', filename='js/pipeline-ui.js') }}"></script>
+</body>
+
+</html>
